@@ -16,9 +16,11 @@ mod delicious_snacks {
 }
 
 fn main() {
+    use delicious_snacks::fruits::*;
+    use delicious_snacks::veggies::*;
     println!(
         "favorite snacks: {} and {}",
-        delicious_snacks::fruit,
-        delicious_snacks::veggie,
+        APPLE,
+        CARROT,
     );
 }
