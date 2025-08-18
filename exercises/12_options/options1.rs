@@ -2,8 +2,9 @@
 // 在22:00(24小时制)之前，冰淇淋还剩下5勺。
 // 在22:00时，有人会把冰淇淋全部吃完，所以就没有剩余(值为0)。
 // 如果 `hour_of_day` 大于23，则返回 `None`。
+
 fn maybe_icecream(hour_of_day: u16) -> Option<u16> {
-    // TODO: 完成函数体。
+    
    if hour_of_day >23{
     None
    } else if hour_of_day <22{
@@ -14,6 +15,21 @@ fn maybe_icecream(hour_of_day: u16) -> Option<u16> {
    }
 }
 
+fn isperson(is:Option<i32>)->Option<String>{
+    match is {
+        Some(2) => Some(String::from("person")),
+        _ => None
+    }
+}
+
+fn isperson2(is:Option<i32>)->Option<String>{
+    if let Some(3) =is{
+        Some(String::from("person"))
+    }
+    else {
+        None
+    }
+}
 fn main() {
     // (可选)你可以选择性地在此处进行试验。
 }
@@ -32,6 +48,8 @@ mod tests {
 
     #[test]
     fn check_icecream() {
+        assert_eq!(isperson(Some(2)).unwrap(),"person");
+        assert_eq!(isperson2(Some(3)).unwrap(),"person");
         assert_eq!(maybe_icecream(0), Some(5));
         assert_eq!(maybe_icecream(9), Some(5));
         assert_eq!(maybe_icecream(18), Some(5));

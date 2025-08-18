@@ -26,9 +26,15 @@ fn count_for(map: &HashMap<String, Progress>, value: Progress) -> usize {
 fn count_iterator(map: &HashMap<String, Progress>, value: Progress) -> usize {
     // `map` 是一个哈希表，具有键 `String` 和 值 `Progress`。
     // map = { "variables1": Complete, "from_str": None, … }
-    map.values()
-    .filter(|&v| *v == value)
-    .count()
+    
+    // 类型推导过程：
+    // 1. map.values() -> Values<Progress> (迭代器，产生 Progress 值)
+    // 2. filter(|&v| ...) -> v 被推断为 Progress 类型
+    // 3. count() -> usize
+    
+    map.values()                    // Values<Progress> 迭代器
+        .filter(|&v| *v == value)  // v: Progress, &v 是模式匹配
+        .count()                    // usize
 }
 
 fn count_collection_for(collection: &[HashMap<String, Progress>], value: Progress) -> usize {
