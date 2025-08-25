@@ -1,8 +1,4 @@
-// 本练习考查以下内容：
-// - Future trait 的基本概念
-// - async/await 语法
-// - 异步函数的定义和调用
-// - 基本的异步编程模式
+
 
 use std::future::Future;
 use std::pin::Pin;
@@ -19,12 +15,7 @@ impl Future for SimpleFuture {
     type Output = String;
 
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        // TODO: 实现 poll 方法
-        // 这个方法应该：
-        // 1. 检查 Future 是否完成
-        // 2. 如果完成，返回 Poll::Ready(result)
-        // 3. 如果未完成，返回 Poll::Pending
-        // 4. 可以模拟异步操作的进度
+ 
         Poll::Ready(String::from("Hello from Future!"))
 
     }
@@ -33,8 +24,7 @@ impl Future for SimpleFuture {
 // TODO: 实现一个异步函数
 // 这个函数应该返回一个 Future，该 Future 最终返回一个字符串
 async fn fetch_data() -> String {
-    // 模拟异步操作，比如从网络获取数据
-    // 可以使用 tokio::time::sleep 来模拟延迟
+
     tokio::time::sleep(Duration::from_secs(1)).await;
     String::from("Hello from Future!")
 }
